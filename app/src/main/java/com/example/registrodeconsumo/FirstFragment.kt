@@ -10,7 +10,9 @@ import android.widget.Button
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.registrodeconsumo.database.Pedidos
+import kotlinx.android.synthetic.main.fragment_first.*
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -38,20 +40,26 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //  val pedidos= Pedidos(0,"Bebidas",1200,1)
-       // val pedidos1= Pedidos(4,"Pisco",2000,2)
+        val pedidos1= Pedidos(4,"Pisco",2000,2)
         //val pedidos2= Pedidos(5,"Papas Fritas",1500,4)
         // viewModel.insertPedidos(pedidos)
-        //viewModel.insertPedidos(pedidos1)
+        viewModel.insertPedidos(pedidos1)
         //viewModel.insertPedidos(pedidos2)
         //scuchar el liveData del ViewModel
 
         //instancia el elemento visual RV
-        val recyclerView= requireView()
+        val mRecyclerView= recyclerView
         //instanciamos un objeto de la clase aDapter
-        val adapter= PedidosAdapter()
+        val mAdapter= PedidosAdapter()
+        mRecyclerView.adapter= mAdapter
+        mRecyclerView.layoutManager= LinearLayoutManager(context)
+
+
 
         viewModel.allPedidos.observe(viewLifecycleOwner, Observer {
             Log.d("datos",it.toString())
+
+            mAdapter.updateDataList(it)
         })
 
 
