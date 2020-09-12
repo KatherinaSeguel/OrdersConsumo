@@ -8,19 +8,21 @@
     <TextView
         android:id="@+id/idTv"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginEnd="29dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/idItemTv"
         app:layout_constraintEnd_toStartOf="@+id/idItemTv"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/idItemTv" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/idItemTv"
         android:layout_width="0dp"
         android:layout_height="59dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="16dp"
         android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@+id/precioTv"
         app:layout_constraintEnd_toStartOf="@+id/precioTv"
@@ -31,7 +33,7 @@
         android:layout_width="0dp"
         android:layout_height="58dp"
         android:layout_marginTop="33dp"
-        android:layout_marginEnd="11dp"
+        android:layout_marginEnd="10dp"
         android:text="TextView"
         app:layout_constraintEnd_toStartOf="@+id/cantTv"
         app:layout_constraintStart_toEndOf="@+id/idItemTv"

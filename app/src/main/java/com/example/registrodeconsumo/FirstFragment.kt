@@ -45,6 +45,11 @@ class FirstFragment : Fragment() {
         //viewModel.insertPedidos(pedidos2)
         //scuchar el liveData del ViewModel
 
+        //instancia el elemento visual RV
+        val recyclerView= requireView()
+        //instanciamos un objeto de la clase aDapter
+        val adapter= PedidosAdapter()
+
         viewModel.allPedidos.observe(viewLifecycleOwner, Observer {
             Log.d("datos",it.toString())
         })
