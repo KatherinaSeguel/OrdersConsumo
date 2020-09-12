@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.registrodeconsumo.database.Pedidos
 import kotlinx.android.synthetic.main.fragment_second.*
 
 /**
@@ -40,14 +40,13 @@ class SecondFragment : Fragment() {
 
 
             val textseg =iditemTv.text.toString()
-            val precioseg=precioTv.text.toString()
-            val cantseg=cantTv.text.toString()
+            val precioseg=precioTv.text.toString().toInt()
+            val cantseg=cantTv.text.toString().toInt()
             if (!textseg.isEmpty()){
-
-
+            val mPedidos = Pedidos(item = textseg, precio = precioseg, cantidad = cantseg)
+                mViewModel.insertPedidos(mPedidos)
+                findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
             }
-
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
 
     }
