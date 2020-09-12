@@ -88,14 +88,14 @@
         android:layout_width="223dp"
         android:layout_height="52dp"
         android:layout_marginTop="123dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_second"
+        app:layout_constraintBottom_toTopOf="@+id/saveBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
 
     <Button
-        android:id="@+id/button_second"
+        android:id="@+id/saveBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
