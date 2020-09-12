@@ -40,10 +40,10 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //  val pedidos= Pedidos(0,"Bebidas",1200,1)
-        val pedidos1= Pedidos(4,"Pisco",2000,2)
+       // val pedidos1= Pedidos(4,"Pisco",2000,2)
         //val pedidos2= Pedidos(5,"Papas Fritas",1500,4)
         // viewModel.insertPedidos(pedidos)
-        viewModel.insertPedidos(pedidos1)
+       // viewModel.insertPedidos(pedidos1)
         //viewModel.insertPedidos(pedidos2)
         //scuchar el liveData del ViewModel
 
@@ -55,18 +55,13 @@ class FirstFragment : Fragment() {
         mRecyclerView.layoutManager= LinearLayoutManager(context)
 
 
-
+//observando el LiveData del view Model
         viewModel.allPedidos.observe(viewLifecycleOwner, Observer {
             Log.d("datos",it.toString())
-
+//Se hace un update al adapter
             mAdapter.updateDataList(it)
         })
 
 
-
-
-        view.findViewById<Button>(R.id.button_second).setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
     }
-}
