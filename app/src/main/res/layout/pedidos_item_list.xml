@@ -7,50 +7,44 @@
 
     <TextView
         android:id="@+id/idTv"
-        android:layout_width="51dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="61dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginEnd="29dp"
+        app:layout_constraintBottom_toBottomOf="@+id/idItemTv"
         app:layout_constraintEnd_toStartOf="@+id/idItemTv"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/idItemTv" />
 
     <TextView
         android:id="@+id/idItemTv"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="59dp"
-        android:layout_marginBottom="11dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="15dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/precioTv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/idTv"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/precioTv"
+        app:layout_constraintEnd_toStartOf="@+id/precioTv"
+        app:layout_constraintStart_toEndOf="@+id/idTv" />
 
     <TextView
         android:id="@+id/precioTv"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="18dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="11dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/cantTv"
-        app:layout_constraintEnd_toEndOf="@+id/cantTv"
-        app:layout_constraintStart_toStartOf="@+id/idItemTv"
-        app:layout_constraintTop_toBottomOf="@+id/idItemTv" />
+        app:layout_constraintEnd_toStartOf="@+id/cantTv"
+        app:layout_constraintStart_toEndOf="@+id/idItemTv"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/cantTv"
-        android:layout_width="198dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="49dp"
-        android:layout_marginBottom="483dp"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="16dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/precioTv"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/precioTv" />
+        app:layout_constraintStart_toEndOf="@+id/precioTv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
