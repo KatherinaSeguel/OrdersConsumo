@@ -10,9 +10,11 @@ import kotlinx.android.synthetic.main.pedidos_item_list.view.*
 import kotlinx.android.synthetic.main.pedidos_item_list.view.cantTv
 import kotlinx.android.synthetic.main.pedidos_item_list.view.precioTv
 
-class PedidosAdapter() : RecyclerView.Adapter<PedidosAdapter.PedidosViewHolder>() {
+class PedidosAdapter( private  var passtheData:PasstheData) : RecyclerView.Adapter<PedidosAdapter.PedidosViewHolder>() {
 
  private var  dataList= emptyList<Pedidos>()  //genera Listado vacío y así no da problamas de instanciación
+
+
 
     fun updateDataList(mDataList: List<Pedidos>){
         //este método actualiza la Lista
@@ -21,11 +23,17 @@ class PedidosAdapter() : RecyclerView.Adapter<PedidosAdapter.PedidosViewHolder>(
 
     }
 
-    inner class PedidosViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
+    inner class PedidosViewHolder(itemView: View):RecyclerView.ViewHolder(itemView),View.OnClickListener{
         val pediText= itemView.idItemTv
         val pediprecio = itemView.precioTv
         val pedicant=itemView.cantTv
         val pedid = itemView.idTv
+        val itemView= itemView.setOnClickListener(this)
+        //escuchar sobre el ViewHolder
+        override fun onClick(p0: View?) {
+            //pasa el elemento encontrado por posición del Adapter
+            passtheData.passTheData(dataList[adapterPosition])
+        }
 
     }
 
@@ -48,5 +56,10 @@ class PedidosAdapter() : RecyclerView.Adapter<PedidosAdapter.PedidosViewHolder>(
 
     override fun getItemCount(): Int {
         return dataList.size
+    }
+    //esta interface está pasando el dato al primer fragmento
+    interface PasstheData{
+
+        fun passTheData(mpedidos:Pedidos)
     }
 }
