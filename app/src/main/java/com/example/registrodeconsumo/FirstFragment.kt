@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -17,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_first.*
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class FirstFragment : Fragment(),PedidosAdapter.PasstheData {
 
     lateinit var viewModel: PedidosViewModel
 
@@ -50,7 +51,7 @@ class FirstFragment : Fragment() {
         //instancia el elemento visual RV
         val mRecyclerView= recyclerView
         //instanciamos un objeto de la clase aDapter
-        val mAdapter= PedidosAdapter()
+        val mAdapter= PedidosAdapter(this)
         mRecyclerView.adapter= mAdapter
         mRecyclerView.layoutManager= LinearLayoutManager(context)
 
@@ -68,4 +69,9 @@ class FirstFragment : Fragment() {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
         }
-    }
+
+    override fun passTheData(mpedidos: Pedidos) {
+        //llega el registro a editar
+        Toast.makeText(context,mpedidos.item,Toast.LENGTH_LONG).show()
+        }
+}

@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.pedidos_item_list.view.*
 import kotlinx.android.synthetic.main.pedidos_item_list.view.cantTv
 import kotlinx.android.synthetic.main.pedidos_item_list.view.precioTv
 
-class PedidosAdapter( private  var passtheData:PasstheData) : RecyclerView.Adapter<PedidosAdapter.PedidosViewHolder>() {
+class PedidosAdapter( private  var mPasstheData:PasstheData) : RecyclerView.Adapter<PedidosAdapter.PedidosViewHolder>() {
 
  private var  dataList= emptyList<Pedidos>()  //genera Listado vacío y así no da problamas de instanciación
 
@@ -32,7 +32,7 @@ class PedidosAdapter( private  var passtheData:PasstheData) : RecyclerView.Adapt
         //escuchar sobre el ViewHolder
         override fun onClick(p0: View?) {
             //pasa el elemento encontrado por posición del Adapter
-            passtheData.passTheData(dataList[adapterPosition])
+            mPasstheData.passTheData(dataList[adapterPosition])
         }
 
     }
