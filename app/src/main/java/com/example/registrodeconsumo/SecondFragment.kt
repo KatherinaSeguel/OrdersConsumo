@@ -17,9 +17,16 @@ class SecondFragment : Fragment() {
 
 
     lateinit var mViewModel: PedidosViewModel
+    private  var idpedidos:Int?= null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mViewModel= ViewModelProvider(this).get(PedidosViewModel::class.java) //variable representa VM
+        arguments?.let {
+
+            idpedidos=it.getInt("id")
+        }
+
     }
 
     override fun onCreateView(

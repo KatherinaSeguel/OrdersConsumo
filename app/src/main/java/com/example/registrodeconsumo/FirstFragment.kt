@@ -22,9 +22,11 @@ class FirstFragment : Fragment(),PedidosAdapter.PasstheData {
 
     lateinit var viewModel: PedidosViewModel
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel=ViewModelProvider(this).get(PedidosViewModel::class.java)
+
     }
 
     override fun onCreateView(

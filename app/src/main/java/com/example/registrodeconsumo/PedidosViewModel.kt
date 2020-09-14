@@ -29,4 +29,9 @@ class PedidosViewModel(application: Application) : AndroidViewModel(application)
     fun deleteAllPedidos() = viewModelScope.launch {
         mrepository.deleteALL()
     }
+
+//Este elemento será observado por la vista cuando le pase el Id
+    fun getOnePedidosByID(id:Int): LiveData<Pedidos>{
+        return mrepository.getOnePedidosByID(id)
+    }
 }

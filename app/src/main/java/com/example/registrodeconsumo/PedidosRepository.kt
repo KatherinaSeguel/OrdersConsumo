@@ -7,7 +7,8 @@ import com.example.registrodeconsumo.database.PedidosDao
 class PedidosRepository (private val mPedidosDao:PedidosDao){
     //necesita la interface DAO
 
-    val listAllPedidos: LiveData<List<Pedidos>> = mPedidosDao.getAllPedidosFromDb() //estoy creando la variable,contendrá todos datos DB
+//estoy creando la variable,contendrá todos datos DB
+    val listAllPedidos: LiveData<List<Pedidos>> = mPedidosDao.getAllPedidosFromDb()
 
     suspend fun insertPedidos(mpedidos: Pedidos){
         mPedidosDao.insertOnePedido(mpedidos)  //llama a la  función del Dao, Inserta información
@@ -15,9 +16,9 @@ class PedidosRepository (private val mPedidosDao:PedidosDao){
 
     //va al DAO y trae el objeto encontrado por ID envuelto en LiveData
 
-   // fun getOneTaskByID(id : Int): LiveData<Pedidos> {
-   //     return mPedidosDao.getOnePedidosByID(id)
-   // }
+    fun getOnePedidosByID(id : Int): LiveData<Pedidos> {
+       return mPedidosDao.getOnePedidosByID(id)
+    }
 
     //Esta función Delete la tabla entera
     suspend fun deleteALL(){

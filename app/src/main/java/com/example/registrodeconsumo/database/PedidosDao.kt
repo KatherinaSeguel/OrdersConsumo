@@ -20,11 +20,13 @@ interface PedidosDao {
     @Query ("SELECT * FROM table_pedidos")
     fun getAllPedidosFromDb(): LiveData<List<Pedidos>> //se envuelve el LIST en LiveData
 
-  // @Query("SELECT * FROM table_pedidos WHERE id=:mid")//los : es para que sepa que es la variable
-   // fun getOnePedidosByID(mid:Int): LiveData<Pedidos>     //yo le paso un id y la query me trae el un objeto que encuentre
+   @Query("SELECT * FROM table_pedidos WHERE id=:mid")//los : es para que sepa que es la variable
+    fun getOnePedidosByID(mid:Int): LiveData<Pedidos>     //yo le paso un id y la query me trae el un objeto que encuentre
 
     //Elimina Toda la Tabla
     @Query ("DELETE FROM table_pedidos")
     suspend fun deleteALLPedidos()
+
+
 
 }
