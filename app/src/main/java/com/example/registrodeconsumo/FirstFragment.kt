@@ -70,8 +70,20 @@ class FirstFragment : Fragment(),PedidosAdapter.PasstheData {
         }
         }
 
+    //Esta es la interface que está en el ADAPTER,trae el objeto Seleccionada.
     override fun passTheData(mpedidos: Pedidos) {
+
+        val mBundle=Bundle()
+
+        mBundle.putInt("id",mpedidos.id)
+
+
         //llega el registro a editar
         Toast.makeText(context,mpedidos.item,Toast.LENGTH_LONG).show()
+
+        //estoy pasando el objeto Bundle, de un fragmento a otro
+        findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment,mBundle)
+
+
         }
 }
