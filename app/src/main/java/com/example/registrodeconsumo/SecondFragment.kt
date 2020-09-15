@@ -1,6 +1,7 @@
 package com.example.registrodeconsumo
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -43,6 +44,10 @@ class SecondFragment : Fragment() {
 
         idpedidos?.let {
             mViewModel.getOnePedidosByID(it).observe(viewLifecycleOwner, Observer {
+            Log.d ("OBJ LIV",it.item)
+                iditemTv.setText(it.item)
+                precioTv.setText(it.precio.toString())
+                cantTv.setText(it.cantidad.toString())
 
             })
         }
@@ -55,12 +60,17 @@ class SecondFragment : Fragment() {
             val textseg =iditemTv.text.toString()
             val precioseg=precioTv.text.toString().toInt()
             val cantseg=cantTv.text.toString().toInt()
-            if (!textseg.isEmpty()){
-            val mPedidos = Pedidos(item = textseg, precio = precioseg, cantidad = cantseg)
-                mViewModel.insertPedidos(mPedidos)
-                findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-            }
-        }
 
+            if (idpedidos != null){
+                val mPedidos= Pedidos(item=textseg,precio=precioseg,cantidad = cantseg,id= idpedidos!!)
+                mViewModel.updatePedidos(mPedidos)
+            }else{
+                if (!textseg.isEmpty()){
+                    val mPedidos= Pedidos(item=textseg,precio=precioseg,cantidad = cantseg)
+                    mViewModel.insertPedidos(mPedidos)
+                }
+            }
+             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+        }
     }
 }

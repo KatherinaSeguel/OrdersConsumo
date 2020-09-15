@@ -25,4 +25,8 @@ class PedidosRepository (private val mPedidosDao:PedidosDao){
         mPedidosDao.deleteALLPedidos()
     }
 
+    suspend fun updatePedidos(mpedidos: Pedidos){
+        mPedidosDao.updateOnePedidos(mpedidos)
+    }
+
 }

@@ -34,4 +34,12 @@ class PedidosViewModel(application: Application) : AndroidViewModel(application)
     fun getOnePedidosByID(id:Int): LiveData<Pedidos>{
         return mrepository.getOnePedidosByID(id)
     }
+
+    //este método hace Update
+    fun updatePedidos(mpedidos: Pedidos) = viewModelScope.launch {
+        mrepository.updatePedidos(mpedidos)
+
+    }
+
+
 }
