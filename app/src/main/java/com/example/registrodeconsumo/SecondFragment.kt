@@ -58,22 +58,22 @@ class SecondFragment : Fragment() {
 
 
             val textseg = iditemTv.text.toString()
-            val precioseg = precioTv.text.toString().toInt()
-            val cantseg = cantTv.text.toString().toInt()
+            val precioseg = precioTv.text.toString()
+            val cantseg = cantTv.text.toString()
 
 
             if (!textseg.isEmpty()) {
                 if (idpedidos != null) {
                     val mPedidos = Pedidos(
                         item = textseg,
-                        precio = precioseg,
-                        cantidad = cantseg,
+                        precio = precioseg.toInt(),
+                        cantidad = cantseg.toInt(),
                         id = idpedidos!!
                     )
                     mViewModel.updatePedidos(mPedidos)
                 } else {
 
-                    val mPedidos = Pedidos(item = textseg, precio = precioseg, cantidad = cantseg)
+                    val mPedidos = Pedidos(item = textseg, precio = precioseg.toInt(), cantidad = cantseg.toInt())
                     mViewModel.insertPedidos(mPedidos)
                 }
             }else{
@@ -81,5 +81,11 @@ class SecondFragment : Fragment() {
             }
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
+
+        ///Termina el botón guardar
+
+
+
+
     }
 }
