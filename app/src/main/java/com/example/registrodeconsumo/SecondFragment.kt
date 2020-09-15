@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -19,21 +20,21 @@ class SecondFragment : Fragment() {
 
 
     lateinit var mViewModel: PedidosViewModel
-    private  var idpedidos:Int?= null
+    private var idpedidos: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mViewModel= ViewModelProvider(this).get(PedidosViewModel::class.java) //variable representa VM
+        mViewModel =
+            ViewModelProvider(this).get(PedidosViewModel::class.java) //variable representa VM
         arguments?.let {
-
-            idpedidos=it.getInt("id")
+            idpedidos = it.getInt("id")
         }
 
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_second, container, false)
@@ -44,11 +45,10 @@ class SecondFragment : Fragment() {
 
         idpedidos?.let {
             mViewModel.getOnePedidosByID(it).observe(viewLifecycleOwner, Observer {
-            Log.d ("OBJ LIV",it.item)
+                // Log.d ("OBJ LIV",it.item)
                 iditemTv.setText(it.item)
                 precioTv.setText(it.precio.toString())
                 cantTv.setText(it.cantidad.toString())
-
             })
         }
 
@@ -57,20 +57,29 @@ class SecondFragment : Fragment() {
         saveBtn.setOnClickListener {
 
 
-            val textseg =iditemTv.text.toString()
-            val precioseg=precioTv.text.toString().toInt()
-            val cantseg=cantTv.text.toString().toInt()
+            val textseg = iditemTv.text.toString()
+            val precioseg = precioTv.text.toString().toInt()
+            val cantseg = cantTv.text.toString().toInt()
 
-            if (idpedidos != null){
-                val mPedidos= Pedidos(item=textseg,precio=precioseg,cantidad = cantseg,id= idpedidos!!)
-                mViewModel.updatePedidos(mPedidos)
-            }else{
-                if (!textseg.isEmpty()){
-                    val mPedidos= Pedidos(item=textseg,precio=precioseg,cantidad = cantseg)
+
+            if (!textseg.isEmpty()) {
+                if (idpedidos != null) {
+                    val mPedidos = Pedidos(
+                        item = textseg,
+                        precio = precioseg,
+                        cantidad = cantseg,
+                        id = idpedidos!!
+                    )
+                    mViewModel.updatePedidos(mPedidos)
+                } else {
+
+                    val mPedidos = Pedidos(item = textseg, precio = precioseg, cantidad = cantseg)
                     mViewModel.insertPedidos(mPedidos)
                 }
+            }else{
+                Toast.makeText(context,"No se guardan registros vacíos",Toast.LENGTH_LONG).show()
             }
-             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
     }
 }
